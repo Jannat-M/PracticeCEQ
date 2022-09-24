@@ -1,0 +1,1 @@
+ins = "t3.micro"
