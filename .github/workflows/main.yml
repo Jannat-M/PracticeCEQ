@@ -31,7 +31,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: 
-         python one.py
+         python jm-workflow/one.py
   job2:
 
     needs: job1
@@ -60,7 +60,7 @@ jobs:
 
         run: |
 
-         python two.py      
+         python jm-workflow/two.py      
   # job2: 
   #   if : ${{(always)}}
   #   needs: job1
