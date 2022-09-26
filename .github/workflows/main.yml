@@ -32,19 +32,47 @@ jobs:
       - name: Run a one-line script
         run: 
          python one.py
-        
-    job2: 
-      if : ${{(always)}}
-      needs: job1
-      runs-on: ubuntu-latest
-      steps:
+  job2:
+
+    needs: job1
+
+    if: ${{ always() }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
       - uses: actions/checkout@v3
+
       - uses: actions/setup-python@v4
-        with: 
-          python-version : '3.10'
-      # Runs a set of commands using the runners shell
-      - name: Run a second script
+
+        with:
+
+            python-version: '3.10'
+
+
+
+      # Runs a single command using the runners shell
+
+      - name: Run a one-line script
+
         run: |
-         python two.py
-          echo Add other actions to build,
-          echo test, and deploy your project.
+
+         python two.py      
+  # job2: 
+  #   if : ${{(always)}}
+  #   needs: job1
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-python@v4
+  #      with: 
+  #         python-version : '3.10'
+  #     # Runs a set of commands using the runners shell
+  #     - name: Run a second script
+  #       run: |
+  #        python two.py
+  #         echo Add other actions to build,
+  #         echo test, and deploy your project.
